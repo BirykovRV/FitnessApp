@@ -2,7 +2,9 @@
 using FitnessApp.BL.Model;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,16 +14,19 @@ namespace FitnessApp.CMD
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Добро пожаловать в приложение FitnessApp.");
+            var culture = CultureInfo.CreateSpecificCulture("ru-RU");
+            var resourceManager = new ResourceManager("FitnessApp.CMD.Languages.Message", typeof(Program).Assembly);
 
-            Console.Write("Введите имя пользователя: ");
+            Console.WriteLine(resourceManager.GetString("Greeting", culture));
+
+            Console.Write(resourceManager.GetString("EnterName", culture));
             var userName = Console.ReadLine();
 
             var userController = new UserController(userName);
             var eatingController = new EatingController(userController.CurrentUser);
             if (userController.IsNewUser)
             {
-                Console.Write("Введите пол: ");
+                Console.Write(resourceManager.GetString("EnterGender", culture));
                 var gender = Console.ReadLine();
                 var birthDate = ParseDateTime();
                 var weight = ParseDouble("вес");
@@ -31,8 +36,8 @@ namespace FitnessApp.CMD
 
             Console.WriteLine(userController.CurrentUser);
 
-            Console.WriteLine("Что Вы хотите сделать?");
-            Console.WriteLine("Е - ввести приём пищи.");
+            Console.WriteLine(resourceManager.GetString("OptionQuestion", culture));
+            Console.WriteLine(resourceManager.GetString("Option", culture));
             var key = Console.ReadKey();
             Console.WriteLine();
 
@@ -53,7 +58,7 @@ namespace FitnessApp.CMD
 
         private static (Food Food, double Weight) EnterEating()
         {
-            Console.Write("Введите имя продукта: ");
+            Console.Write("EnterProductName");
             var foodName = Console.ReadLine();
 
             var proteins = ParseDouble("белки");
