@@ -37,7 +37,7 @@ namespace FitnessApp.BL.Controller
             CurrentUser = Users.SingleOrDefault(u => u.Name == userName);
 
             if (CurrentUser == null)
-            {
+            {                
                 CurrentUser = new User(userName);
                 Users.Add(CurrentUser);
                 IsNewUser = true;
@@ -64,10 +64,9 @@ namespace FitnessApp.BL.Controller
             }
         }
 
-        public void SetNewUserData(string genderName, DateTime birthDate, double weight = 1, double height = 1)
+        public void SetNewUserData(string genderName, DateTime birthDate, float weight = 1, float height = 1)
         {
             // Проверка входных параметров
-
             CurrentUser.Gender = new Gender(genderName);
             CurrentUser.BirthDate = birthDate;
             CurrentUser.Height = height;

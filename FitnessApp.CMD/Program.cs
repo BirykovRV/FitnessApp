@@ -52,12 +52,12 @@ namespace FitnessApp.CMD
             return birthDate;
         }
 
-        private static double ParseDouble(string name)
+        private static float ParseDouble(string name)
         {
             while (true)
             {
                 Console.Write($"Введите {name}: ");
-                if (double.TryParse(Console.ReadLine(), out double value))
+                if (float.TryParse(Console.ReadLine(), out float value))
                 {
                     return value;
                 }
