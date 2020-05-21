@@ -1,18 +1,16 @@
 ﻿using FitnessApp.BL.Model;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace FitnessApp.BL.Controller
 {
     /// <summary>
     /// Контроллер пользователя.
     /// </summary>
-    public class UserController
+    public class UserController : BaseController
     {
+        private const string USER_FILE_NAME = "users.dat";
         /// <summary>
         /// Пользователь приложения.
         /// </summary>
@@ -26,7 +24,7 @@ namespace FitnessApp.BL.Controller
         /// </summary>
         /// <param name="user"> Пользователь. </param>
         public UserController(string userName)
-        {            
+        {
             if (string.IsNullOrWhiteSpace(userName))
             {
                 throw new ArgumentNullException("Имя пользователя не может быть пустым или null.", nameof(userName));
@@ -37,52 +35,32 @@ namespace FitnessApp.BL.Controller
             CurrentUser = Users.SingleOrDefault(u => u.Name == userName);
 
             if (CurrentUser == null)
-            {                
+            {
                 CurrentUser = new User(userName);
                 Users.Add(CurrentUser);
                 IsNewUser = true;
-                Save();
-            }
-        }
-        /// <summary>
-        /// Получить данные пользователей.
-        /// </summary>
-        /// <returns> Список пользователей. </returns>
-        private List<User> GetUsersData()
-        {
-            var formatter = new BinaryFormatter();
-            using (var fs = new FileStream("users.dat", FileMode.OpenOrCreate))
-            {
-                if (fs.Length > 0 && formatter.Deserialize(fs) is List<User> users)
-                {
-                    return users;
-                }
-                else
-                {
-                    return new List<User>();
-                }
+                SaveUserData();
             }
         }
 
-        public void SetNewUserData(string genderName, DateTime birthDate, float weight = 1, float height = 1)
+        public void SetNewUserData(string genderName, DateTime birthDate, double weight = 1, double height = 1)
         {
             // Проверка входных параметров
             CurrentUser.Gender = new Gender(genderName);
             CurrentUser.BirthDate = birthDate;
             CurrentUser.Height = height;
             CurrentUser.Weight = weight;
-            Save();
+            SaveUserData();
         }
-        /// <summary>
-        /// Сохранить данные пользователя.
-        /// </summary>
-        public void Save()
+
+        private void SaveUserData()
         {
-            var formatter = new BinaryFormatter();
-            using (var fs = new FileStream("users.dat", FileMode.OpenOrCreate))
-            {
-                formatter.Serialize(fs, Users);
-            }
-        }        
+            Save(USER_FILE_NAME, Users);
+        }
+
+        private List<User> GetUsersData()
+        {
+            return Load<List<User>>(USER_FILE_NAME) ?? new List<User>();
+        }
     }
 }

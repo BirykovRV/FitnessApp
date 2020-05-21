@@ -24,11 +24,11 @@ namespace FitnessApp.BL.Model
         /// <summary>
         /// Вес.
         /// </summary>
-        public float Weight { get; set; }
+        public double Weight { get; set; }
         /// <summary>
         /// Рост.
         /// </summary>
-        public float Height { get; set; }
+        public double Height { get; set; }
         #endregion
         /// <summary>
         /// Создать нового пользователя.
@@ -38,7 +38,7 @@ namespace FitnessApp.BL.Model
         /// <param name="birthDate"> Дата рождения. </param>
         /// <param name="weight"> Вес. </param>
         /// <param name="height"> Рост. </param>
-        public User(string name, Gender gender, DateTime birthDate, float weight, float height)
+        public User(string name, Gender gender, DateTime birthDate, double weight, double height)
         {
             #region Проверка условий
             if (string.IsNullOrWhiteSpace(name))
