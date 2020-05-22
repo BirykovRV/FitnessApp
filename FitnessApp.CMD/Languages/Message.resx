@@ -129,8 +129,14 @@
   <data name="Greeting" xml:space="preserve">
     <value>Добро пожаловать в приложение FitnessApp</value>
   </data>
-  <data name="Option" xml:space="preserve">
+  <data name="Option1" xml:space="preserve">
     <value>Е - ввести приём пищи.</value>
+  </data>
+  <data name="Option2" xml:space="preserve">
+    <value>A - ввести упражнение.</value>
+  </data>
+  <data name="Option3" xml:space="preserve">
+    <value>Q - выход.</value>
   </data>
   <data name="OptionQuestion" xml:space="preserve">
     <value>Что Вы хотите сделать?</value>

@@ -99,9 +99,27 @@ namespace FitnessApp.CMD.Languages {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Е - ввести приём пищи..
         /// </summary>
-        internal static string Option {
+        internal static string Option1 {
             get {
-                return ResourceManager.GetString("Option", resourceCulture);
+                return ResourceManager.GetString("Option1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на A - ввести упражнение..
+        /// </summary>
+        internal static string Option2 {
+            get {
+                return ResourceManager.GetString("Option2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Q - выход..
+        /// </summary>
+        internal static string Option3 {
+            get {
+                return ResourceManager.GetString("Option3", resourceCulture);
             }
         }
         
