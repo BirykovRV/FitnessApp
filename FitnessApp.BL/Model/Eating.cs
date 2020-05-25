@@ -11,16 +11,18 @@ namespace FitnessApp.BL.Model
     /// </summary>
     [Serializable]
     public class Eating
-    {     
+    {
+        public int Id { get; set; }
         /// <summary>
         /// Время приема пищи.
         /// </summary>
-        public DateTime Moment { get; }
+        public DateTime Moment { get; set; }
         /// <summary>
         /// Список продуктов.
         /// </summary>
-        public Dictionary<Food, double> Foods { get; }
-        public User User { get; }
+        public Dictionary<Food, double> Foods { get; set; }
+        public int UserId { get; set; }
+        public virtual User User { get; set; }
 
         public Eating(User user)
         {

@@ -9,13 +9,17 @@ namespace FitnessApp.BL.Model
     [Serializable]
     public class Exercise
     {
-        public DateTime Star { get; }
+        public int Id { get; set; }
+        public DateTime Star { get; set; }
 
-        public DateTime Finish { get; }
+        public DateTime Finish { get; set; }
 
-        public Activity Activity { get; }
+        public int ActivityId { get; set; }
 
-        public User User { get; }
+        public virtual Activity Activity { get; set; }
+        public int UserId { get; set; }
+
+        public virtual User User { get; set; }
 
         public Exercise(DateTime star, DateTime finish, Activity activity, User user)
         {

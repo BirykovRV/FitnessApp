@@ -46,12 +46,12 @@ namespace FitnessApp.BL.Controller
 
         private List<Exercise> GetAllExercises()
         {
-            return Load<List<Exercise>>(EXERCISES_FILE_NAME) ?? new List<Exercise>();
+            return Load<Exercise>(EXERCISES_FILE_NAME) ?? new List<Exercise>();
         }
 
         private List<Activity> GetAllActivities()
         {
-            return Load<List<Activity>>(EXERCISES_FILE_NAME) ?? new List<Activity>();
+            return Load<Activity>(EXERCISES_FILE_NAME) ?? new List<Activity>();
         }
 
         private void SaveExercises()

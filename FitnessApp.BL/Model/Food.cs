@@ -8,28 +8,29 @@ namespace FitnessApp.BL.Model
     [Serializable]
     public class Food
     {
+        public int Id { get; set; }
         #region Свойства
 
         /// <summary>
         /// Имя.
         /// </summary>
-        public string Name { get; }
+        public string Name { get; set; }
         /// <summary>
         /// Белки.
         /// </summary>
-        public double Proteins { get; }
+        public double Proteins { get; set; }
         /// <summary>
         /// Жиры.
         /// </summary>
-        public double Fats { get; }
+        public double Fats { get; set; }
         /// <summary>
         /// Углеводы.
         /// </summary>
-        public double Carbohydrates { get; }
+        public double Carbohydrates { get; set; }
         /// <summary>
         /// Калории за 100 г.
         /// </summary>
-        public double Calories { get; }
+        public double Calories { get; set; }
         #endregion
         /// <summary>
         /// Создать новую еду.

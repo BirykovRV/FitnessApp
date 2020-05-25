@@ -43,14 +43,14 @@ namespace FitnessApp.BL.Controller
             }
         }
 
-        private Eating GetEating()
+        private List<Eating> GetEating()
         {
-            return Load<Eating>(EATING_FILE_NAME) ?? new Eating(user);
+            return Load<Eating>(EATING_FILE_NAME) ?? new List<Eating>();
         }
 
         private List<Food> GetAllFoods()
         {
-            return Load<List<Food>>(FOODS_FILE_NAME) ?? new List<Food>();
+            return Load<Food>(FOODS_FILE_NAME) ?? new List<Food>();
         }
 
         private void SaveFoods()

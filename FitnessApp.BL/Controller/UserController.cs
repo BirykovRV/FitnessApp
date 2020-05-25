@@ -60,7 +60,7 @@ namespace FitnessApp.BL.Controller
 
         private List<User> GetUsersData()
         {
-            return Load<List<User>>(USER_FILE_NAME) ?? new List<User>();
+            return Load<User>(USER_FILE_NAME) ?? new List<User>();
         }
     }
 }
